@@ -166,9 +166,9 @@ footer{margin-top:80px;border-top:1px solid var(--bdr);padding:36px 24px 28px;te
     <p class="pop-sub">Laisse-nous tes informations et on t'envoie <strong>la vidéo de présentation complète</strong> — découvre notre méthode et comment The Trading Desk peut changer ta façon de trader.</p>
         <form action="https://services.leadconnectorhq.com/hooks/hdXL26UXnYVzNw8ipry1/webhook-trigger/39806a25-5dcd-4a94-8e3c-c861bd04f7a0" method="POST" target="ghl_iframe" onsubmit="handleSubmit(event)">
       <div class="fi">
-        <input name="name" placeholder="Prénom et nom" required>
-        <input name="email" type="email" placeholder="Adresse courriel" required>
-        <input name="phone" type="tel" placeholder="Téléphone">
+        <input name="Full Name" placeholder="Prénom et nom" required>
+        <input name="Email" type="email" placeholder="Adresse courriel" required>
+        <input name="Phone" type="tel" placeholder="Téléphone">
         <button class="cta-btn" type="submit" style="padding:14px;font-size:14.5px">ENVOIE-MOI LA VIDÉO →</button>
       </div>
     </form>
@@ -392,8 +392,8 @@ function sendToGHL(name,email,phone){
 }
 
 function handleSubmit(e){
-  var n=e.target.querySelector('[name="name"]').value.trim();
-  var em=e.target.querySelector('[name="email"]').value.trim();
+  var n=e.target.querySelector('[name="Full Name"]').value.trim();
+  var em=e.target.querySelector('[name="Email"]').value.trim();
   if(!n||!em){e.preventDefault();return;}
   closePop();
   setTimeout(function(){window.location.href='https://vantamedia-ai.github.io/ttd-landing/merci.html';},500);
