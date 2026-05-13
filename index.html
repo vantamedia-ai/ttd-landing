@@ -183,7 +183,7 @@ footer{margin-top:80px;border-top:1px solid var(--bdr);padding:36px 24px 28px;te
   <p class="hero-sub"><strong>Chaque matin, on trade en live. Rejoins-nous.</strong><br>La seule méthode en direct basée sur les statistiques — appliquée chaque matin depuis 2016 avec +1 000 membres. <strong>Zéro journée manquée.</strong></p>
   <div class="cta-duo">
     <a href="#calendar" class="cta-btn" onclick="document.getElementById('calendar').scrollIntoView({behavior:'smooth'});return false">📅 Réserver ma consultation gratuite</a>
-    <a href="#" class="cta-btn" onclick="showPop();return false" style="background:#1B4FBF;color:#fff;border:1px solid rgba(255,255,255,0.18);box-shadow:0 4px 28px rgba(27,79,191,.25),0 8px 32px rgba(180,180,180,0.4),0 2px 8px rgba(180,180,180,0.25)">▶ Voir la présentation gratuite</a>
+    <a href="#" class="cta-btn" onclick="openPop();return false" style="background:#1B4FBF;color:#fff;border:1px solid rgba(255,255,255,0.18);box-shadow:0 4px 28px rgba(27,79,191,.25),0 8px 32px rgba(180,180,180,0.4),0 2px 8px rgba(180,180,180,0.25)">▶ Voir la présentation gratuite</a>
   </div>
   <p class="cta-note"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5.5" stroke="#00C878" stroke-width="1"/><path d="M3.5 6l1.8 1.8L9 4" stroke="#00C878" stroke-width="1.2" stroke-linecap="round"/></svg>Consultation 100% gratuite · 30 minutes · Aucun engagement</p>
 </section>
@@ -386,6 +386,7 @@ const WEBHOOK_URL='https://services.leadconnectorhq.com/hooks/hdXL26UXnYVzNw8ipr
 const REDIRECT_URL='https://link.thetradingdesk.net/widget/bookings/1appel';
 async function sendToGHL(name,email,phone){try{const r=await fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,email,phone})});return r.ok;}catch{return false;}}
 function closePop(){document.getElementById('pop').classList.remove('show');}
+function openPop(){document.getElementById('pop').classList.add('show');}
 function showPop(){if(!sessionStorage.getItem('ttd_pop')){document.getElementById('pop').classList.add('show');sessionStorage.setItem('ttd_pop','1');}}
 document.getElementById('pop').addEventListener('click',e=>{if(e.target===document.getElementById('pop'))closePop();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closePop();});
