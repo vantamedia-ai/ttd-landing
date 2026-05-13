@@ -164,18 +164,15 @@ footer{margin-top:80px;border-top:1px solid var(--bdr);padding:36px 24px 28px;te
     <p class="pop-tag">Accès gratuit — Vidéo exclusive</p>
     <h2 class="pop-h">REÇOIS NOTRE<br><em>PRÉSENTATION</em><br>GRATUITE</h2>
     <p class="pop-sub">Laisse-nous tes informations et on t'envoie <strong>la vidéo de présentation complète</strong> — découvre notre méthode et comment The Trading Desk peut changer ta façon de trader.</p>
-        <div class="fi">
-      <input id="pn" placeholder="Prénom et nom">
-      <input id="pe" type="email" placeholder="Adresse courriel">
-      <input id="pp" type="tel" placeholder="Téléphone">
-      <button class="cta-btn" onclick="submitLead()" style="padding:14px;font-size:14.5px">ENVOIE-MOI LA VIDÉO →</button>
-    </div>
-    <form id="ghl_form" action="https://services.leadconnectorhq.com/hooks/hdXL26UXnYVzNw8ipry1/webhook-trigger/39806a25-5dcd-4a94-8e3c-c861bd04f7a0" method="POST" target="ghl_frame" style="display:none">
-      <input name="name" id="fn">
-      <input name="email" id="fe">
-      <input name="phone" id="fp">
+        <form action="https://services.leadconnectorhq.com/hooks/hdXL26UXnYVzNw8ipry1/webhook-trigger/39806a25-5dcd-4a94-8e3c-c861bd04f7a0" method="POST" target="ghl_iframe" onsubmit="handleSubmit(event)">
+      <div class="fi">
+        <input name="name" placeholder="Prénom et nom" required>
+        <input name="email" type="email" placeholder="Adresse courriel" required>
+        <input name="phone" type="tel" placeholder="Téléphone">
+        <button class="cta-btn" type="submit" style="padding:14px;font-size:14.5px">ENVOIE-MOI LA VIDÉO →</button>
+      </div>
     </form>
-    <iframe name="ghl_frame" id="ghl_frame" style="display:none;width:0;height:0;border:0"></iframe>
+    <iframe name="ghl_iframe" style="display:none;width:0;height:0;border:none"></iframe>
     <p class="pop-note">100% gratuit · On ne spam pas · Accès immédiat</p>
     <a href="#calendar" class="pop-alt" onclick="closePop()">Réserver une consultation gratuite →</a>
   </div>
@@ -394,6 +391,13 @@ function sendToGHL(name,email,phone){
   }).catch(function(){});
 }
 
+function handleSubmit(e){
+  var n=e.target.querySelector('[name="name"]').value.trim();
+  var em=e.target.querySelector('[name="email"]').value.trim();
+  if(!n||!em){e.preventDefault();return;}
+  closePop();
+  setTimeout(function(){window.location.href='https://vantamedia-ai.github.io/ttd-landing/merci.html';},500);
+}
 function closePop(){document.getElementById('pop').classList.remove('show');}
 function openPop(){document.getElementById('pop').classList.add('show');}
 function showPop(){
