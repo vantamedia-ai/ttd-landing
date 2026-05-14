@@ -12,9 +12,9 @@
 :root{--bg:#06080C;--bg2:#0A0E15;--bg3:#0F141D;--bg4:#141B27;--blue:#1B4FBF;--green:#00C878;--greenb:rgba(0,200,120,0.08);--bdr:rgba(255,255,255,0.07);--bdrg:rgba(0,200,120,0.2);--text:#E8EDF5;--muted:#64748B;--fd:'Bebas Neue',sans-serif;--fb:'DM Sans',sans-serif;}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-#pop{position:fixed;inset:0;background:rgba(4,6,10,.92);z-index:9000;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .35s}
+#pop{position:fixed;inset:0;background:rgba(4,6,10,.92);z-index:9000;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .35s;overflow-y:auto;-webkit-overflow-scrolling:touch}
 #pop.show{opacity:1;pointer-events:all}
-.pop-box{background:var(--bg3);border:1px solid var(--bdr);border-radius:18px;max-width:460px;width:100%;padding:40px 36px 32px;position:relative;transform:translateY(18px);transition:transform .35s}
+.pop-box{background:var(--bg3);border:1px solid var(--bdr);border-radius:18px;max-width:460px;width:100%;padding:40px 36px 32px;position:relative;transform:translateY(18px);transition:transform .35s;margin:auto}
 #pop.show .pop-box{transform:none}
 .pop-x{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:50%}
 .pop-x:hover{background:var(--bg4)}
@@ -155,7 +155,12 @@ footer{margin-top:80px;border-top:1px solid var(--bdr);padding:36px 24px 28px;te
 }
 .fu.vis{opacity:1;transform:none}
 .ghl-form-wrap{margin:18px 0 14px;background:transparent;border-radius:8px;overflow:hidden}
-.ghl-form-wrap iframe{display:block;width:100%;min-height:540px;background:transparent}
+.ghl-form-wrap iframe{display:block;width:100%;min-height:560px;background:transparent}
+@media(max-width:640px){
+  .pop-box{padding:32px 22px 26px;max-width:100%}
+  .pop-h{font-size:30px}
+  .ghl-form-wrap iframe{min-height:640px}
+}
 </style>
 </head>
 <body>
@@ -178,7 +183,7 @@ footer{margin-top:80px;border-top:1px solid var(--bdr);padding:36px 24px 28px;te
     <div class="ghl-form-wrap">
       <iframe
         src="https://link.thetradingdesk.net/widget/form/Ow5fcAFHw4MLzvIeUjD5"
-        style="width:100%;height:540px;border:none;border-radius:8px;background:transparent"
+        style="width:100%;border:none;border-radius:8px;background:transparent"
         id="inline-Ow5fcAFHw4MLzvIeUjD5"
         data-layout='{"id":"INLINE"}'
         data-trigger-type="alwaysShow"
